@@ -1,0 +1,3 @@
+rootProject.name = 'ReactNativeAutoUpdater'
+
+include ':app'

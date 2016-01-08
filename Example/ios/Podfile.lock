@@ -1,0 +1,14 @@
+PODS:
+  - ReactNativeAutoUpdater (0.1.0)
+
+DEPENDENCIES:
+  - ReactNativeAutoUpdater (from `../../`)
+
+EXTERNAL SOURCES:
+  ReactNativeAutoUpdater:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  ReactNativeAutoUpdater: f26dfab64d4a566e10a63cc47d1e56f779374adb
+
+COCOAPODS: 0.39.0

@@ -1,0 +1,31 @@
+# references:
+# * http://www.objc.io/issue-6/travis-ci.html
+# * https://github.com/supermarin/xcpretty#usage
+
+# references:
+# * http://www.objc.io/issue-6/travis-ci.html
+# * https://github.com/supermarin/xcpretty#usage
+
+language: objective-c
+# cache: cocoapods
+podfile: Example/ios/Podfile
+cache:
+  directories:
+  - Example/node_modules
+before_install:
+- gem install cocoapods -v 0.39.0 # Since Travis is not always on latest version
+- pod install --project-directory=Example/ios
+install:
+#- gem install xcpretty --no-rdoc --no-ri --no-document --quiet 
+- brew install xctool
+- brew reinstall nvm
+- mkdir -p .nvm
+- export NVM_DIR="$PWD/.nvm"
+- source $(brew --prefix nvm)/nvm.sh
+- nvm install 4
+- cd Example
+- npm install
+- cd ..
+script:
+- set -o pipefail && xctool clean test -workspace Example/ios/ReactNativeAutoUpdater.xcworkspace -scheme ReactNativeAutoUpdater_Tests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+- pod lib lint --quick
