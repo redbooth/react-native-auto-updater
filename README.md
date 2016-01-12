@@ -1,6 +1,6 @@
 # ReactNativeAutoUpdater
 
-[![CI Status](http://img.shields.io/travis/aerofs/ReactNativeAutoUpdater.svg?style=flat)](https://travis-ci.org/aerofs/ReactNativeAutoUpdater)
+[![Build Status](https://travis-ci.org/aerofs/react-native-auto-updater.svg?branch=master)](https://travis-ci.org/aerofs/react-native-auto-updater)
 [![Version](https://img.shields.io/cocoapods/v/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
 [![License](https://img.shields.io/cocoapods/l/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
 [![Platform](https://img.shields.io/cocoapods/p/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
