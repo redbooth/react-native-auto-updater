@@ -1,11 +1,7 @@
 # ReactNativeAutoUpdater
 
-[![Build Status](https://travis-ci.org/aerofs/react-native-auto-updater.svg?branch=master)](https://travis-ci.org/aerofs/react-native-auto-updater)
-
 [![Version](https://img.shields.io/cocoapods/v/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
-
 [![License](https://img.shields.io/cocoapods/l/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
-
 [![Platform](https://img.shields.io/cocoapods/p/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
 
 <img src="rnau.png" alt="React-Native Auto-Updater" width="400" />
@@ -158,7 +154,6 @@ ReactNativeAutoUpdater *updater = [ReactNativeAutoUpdater sharedInstance];
 #### Important
 
 Don't forget to provide ReactNativeAutoUpdater with the metadata file for the JS code that is shipped with the app. Metadata in this file is used to compare the shipped JS code with updates. Thanks to [@arbesfeld](https://github.com/arbesfeld) for pointing out this bug.
-
 
 
 ## License
