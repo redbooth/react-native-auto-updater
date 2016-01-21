@@ -39,8 +39,11 @@
    */
   ReactNativeAutoUpdater* updater = [ReactNativeAutoUpdater sharedInstance];
   [updater setDelegate:self];
+  NSURL* defaultMetadataFileLocation = [[NSBundle mainBundle] URLForResource:@"metadata" withExtension:@"json"];
   [updater initializeWithUpdateMetadataUrl:[NSURL URLWithString:JS_CODE_METADATA_URL]
-                     defaultJSCodeLocation:defaultJSCodeLocation];
+                     defaultJSCodeLocation:defaultJSCodeLocation
+               defaultMetadataFileLocation:defaultMetadataFileLocation ];
+  
   [updater setHostnameForRelativeDownloadURLs:@"https://www.dropbox.com"];
   [updater checkUpdate];
 

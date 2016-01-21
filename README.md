@@ -1,8 +1,11 @@
 # ReactNativeAutoUpdater
 
 [![Build Status](https://travis-ci.org/aerofs/react-native-auto-updater.svg?branch=master)](https://travis-ci.org/aerofs/react-native-auto-updater)
+
 [![Version](https://img.shields.io/cocoapods/v/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
+
 [![License](https://img.shields.io/cocoapods/l/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
+
 [![Platform](https://img.shields.io/cocoapods/p/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
 
 <img src="rnau.png" alt="React-Native Auto-Updater" width="400" />
@@ -12,7 +15,9 @@
 At [AeroFS](http://www.aerofs.com), we're close to shipping our first React Native app. Once the app is out, we would want to send updates over the air to bypass the sluggish AppStore review process, and speed up release cycles. We've built `ReactNativeAutoUpdater` to do just that. It was built as a part of our [2015 Thanksgiving Hackathon](https://www.aerofs.com/blog/how-we-run-hackathons/).
 
 > **Does Apple permit this?**
+
 >
+
 > Yes! [Section 3.3.2 of the iOS Developer Program](https://developer.apple.com/programs/ios/information/iOS_Program_Information_4_3_15.pdf) allows it "provided that such scripts and code do not change the primary purpose of the Application by providing features or functionality that are inconsistent with the intended and advertised purpose of the Application."
 
 React Native `jsbundle` can be easily over a couple of megabytes. On cellular connections, downloading them more often than what is needed is not a good idea. To tackle that problem, we need to decide if the bundle needs to be downloaded at all.
@@ -48,6 +53,7 @@ Here's a GIF'ed screencast of `ReactNativeAutoUpdater` in action.
 ![rn-auto-updater](https://cloud.githubusercontent.com/assets/216346/12154339/c0e6e432-b473-11e5-8aa9-29ef89029c08.gif)
 
 
+
 ## Installation
 
 ReactNativeAutoUpdater is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
@@ -81,8 +87,14 @@ The code below essentially follows these steps.
 
   ReactNativeAutoUpdater* updater = [ReactNativeAutoUpdater sharedInstance];
   [updater setDelegate:self];
+
+  // We set the location of the metadata file that has information about the JS Code that is shipped with the app.
+  // This metadata is used to compare the shipped code against the updates.
+
+  NSURL* defaultMetadataFileLocation = [[NSBundle mainBundle] URLForResource:@"metadata" withExtension:@"json"];
   [updater initializeWithUpdateMetadataUrl:[NSURL URLWithString:JS_CODE_METADATA_URL]
-                     defaultJSCodeLocation:defaultJSCodeLocation];
+                     defaultJSCodeLocation:defaultJSCodeLocation
+               defaultMetadataFileLocation:defaultMetadataFileLocation ];
   [updater setHostnameForRelativeDownloadURLs:@"https://www.aerofs.com"];
   [updater checkUpdate];
 
@@ -142,6 +154,10 @@ ReactNativeAutoUpdater *updater = [ReactNativeAutoUpdater sharedInstance];
 [updater setHostnameForRelativeDownloadURLs:@"https://www.aerofs.com/"];
 
 ```
+
+#### Important
+
+Don't forget to provide ReactNativeAutoUpdater with the metadata file for the JS code that is shipped with the app. Metadata in this file is used to compare the shipped JS code with updates. Thanks to [@arbesfeld](https://github.com/arbesfeld) for pointing out this bug.
 
 
 

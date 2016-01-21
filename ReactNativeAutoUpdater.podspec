@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "ReactNativeAutoUpdater"
-  s.version          = "0.1.5"
+  s.version          = "0.1.6"
   s.summary          = "A library to manage dynamic updates to React Native apps. Available as a CocoaPod."
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Rahul Jiresal" => "rahul@aerofs.com" }
-  s.source           = { :git => "https://github.com/aerofs/react-native-auto-updater", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/aerofs/react-native-auto-updater.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/rahuljiresal'
 
   s.platform     = :ios, '7.0'

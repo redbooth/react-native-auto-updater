@@ -23,6 +23,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		89ADA739BD3072294FB5EFCC /* libPods-ReactNativeAutoUpdater_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 250384804D1B58B2BA7C1811 /* libPods-ReactNativeAutoUpdater_Tests.a */; };
+		B781E6321C517DD600F23A25 /* metadata.json in Resources */ = {isa = PBXBuildFile; fileRef = B781E6311C517DD600F23A25 /* metadata.json */; };
 		B7BE04071C05793A009381A2 /* libReactNativeAutoUpdater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BE04061C05793A009381A2 /* libReactNativeAutoUpdater.a */; };
 		C5FEB1E8616EDB106BEF633D /* libPods-ReactNativeAutoUpdater_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1197C7384152D561C046AB /* libPods-ReactNativeAutoUpdater_Example.a */; };
 /* End PBXBuildFile section */
@@ -135,6 +136,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9B1197C7384152D561C046AB /* libPods-ReactNativeAutoUpdater_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactNativeAutoUpdater_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D753C62B2A59120907F58B /* Pods-ReactNativeAutoUpdater_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeAutoUpdater_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactNativeAutoUpdater_Example/Pods-ReactNativeAutoUpdater_Example.release.xcconfig"; sourceTree = "<group>"; };
+		B781E6311C517DD600F23A25 /* metadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metadata.json; sourceTree = "<group>"; };
 		B7BE04061C05793A009381A2 /* libReactNativeAutoUpdater.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libReactNativeAutoUpdater.a; path = "Pods/../build/Debug-iphoneos/libReactNativeAutoUpdater.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,6 +247,7 @@
 		13B07FAE1A68108700A75B9A /* ReactNativeAutoUpdater */ = {
 			isa = PBXGroup;
 			children = (
+				B781E6311C517DD600F23A25 /* metadata.json */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -548,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				B781E6321C517DD600F23A25 /* metadata.json in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
