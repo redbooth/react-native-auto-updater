@@ -38,10 +38,11 @@ typedef NS_ENUM(NSUInteger, ReactNativeAutoUpdaterUpdateType)
 /**
  *  Initializes the singleton instance with the metadata URL and default JS code location
  *
- *  @param url                   Metadata URL where information of updates can be downloaded
- *  @param defaultJSCodeLocation default JS code location in case there are no updates
+ *  @param url                          Metadata URL where information of updates can be downloaded
+ *  @param defaultJSCodeLocation        default JS code location in case there are no updates
+ *  @param defaultMetadataFileLocation  location of the metadata file that described the JS code shipped with the app
  */
-- (void)initializeWithUpdateMetadataUrl:(NSURL*)url defaultJSCodeLocation:(NSURL*)defaultJSCodeLocation;
+- (void)initializeWithUpdateMetadataUrl:(NSURL*)url defaultJSCodeLocation:(NSURL*)defaultJSCodeLocation defaultMetadataFileLocation:(NSURL*)metadataFileLocation;
 
 /**
  *  Returns the location of the latest JS code that has been downloaded so far.

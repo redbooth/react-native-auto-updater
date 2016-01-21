@@ -10,19 +10,20 @@
 #import "StatusBarNotification.h"
 
 NSString* const ReactNativeAutoUpdaterLastUpdateCheckDate = @"ReactNativeAutoUpdater Last Update Check Date";
-NSString* const ReactNativeAutoUpdaterCurrentJSCodeVersion = @"ReactNativeAutoUpdater Current JS Code Version";
+NSString* const ReactNativeAutoUpdaterCurrentJSCodeMetadata = @"ReactNativeAutoUpdater Current JS Code Metadata";
 
-@interface ReactNativeAutoUpdater() <NSURLSessionDownloadDelegate> {
-    NSString* __tempCodeVersion;
-}
+@interface ReactNativeAutoUpdater() <NSURLSessionDownloadDelegate>
 
 @property NSURL* defaultJSCodeLocation;
+@property NSURL* defaultMetadataFileLocation;
 @property NSURL* _latestJSCodeLocation;
 @property NSURL* metadataUrl;
 @property BOOL showProgress;
 @property BOOL allowCellularDataUse;
 @property NSString* hostname;
 @property ReactNativeAutoUpdaterUpdateType updateType;
+@property NSDictionary* updateMetadata;
+@property BOOL initializationOK;
 
 @end
 
@@ -30,7 +31,6 @@ NSString* const ReactNativeAutoUpdaterCurrentJSCodeVersion = @"ReactNativeAutoUp
 
 static ReactNativeAutoUpdater *RNAUTOUPDATER_SINGLETON = nil;
 static bool isFirstAccess = YES;
-
 
 + (id)sharedInstance
 {
@@ -85,9 +85,12 @@ static bool isFirstAccess = YES;
 
 #pragma mark - initialize Singleton
 
-- (void)initializeWithUpdateMetadataUrl:(NSURL*)url defaultJSCodeLocation:(NSURL*)defaultJSCodeLocation {
+- (void)initializeWithUpdateMetadataUrl:(NSURL*)url defaultJSCodeLocation:(NSURL*)defaultJSCodeLocation defaultMetadataFileLocation:(NSURL*)metadataFileLocation {
     self.metadataUrl = url;
     self.defaultJSCodeLocation = defaultJSCodeLocation;
+    self.defaultMetadataFileLocation = metadataFileLocation;
+    
+    [self compareSavedMetadataAgainstContentsOfFile: self.defaultMetadataFileLocation];
 }
 
 - (void)showProgress: (BOOL)progress {
@@ -114,9 +117,49 @@ static bool isFirstAccess = YES;
     self.hostname = hostname;
 }
 
+- (void)compareSavedMetadataAgainstContentsOfFile: (NSURL*)metadataFileLocation {
+    NSData* fileMetadata = [NSData dataWithContentsOfURL: metadataFileLocation];
+    if (!fileMetadata) {
+        NSLog(@"[ReactNativeAutoUpdater]: Make sure you initialize RNAU with a metadata file.");
+        if (self.showProgress) {
+            [StatusBarNotification showWithMessage:NSLocalizedString(@"Error reading Metadata File.", nil) backgroundColor:[StatusBarNotification errorColor] autoHide:YES];
+        }
+        self.initializationOK = NO;
+        return;
+    }
+    NSError *error;
+    NSDictionary* localMetadata = [NSJSONSerialization JSONObjectWithData:fileMetadata options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        NSLog(@"[ReactNativeAutoUpdater]: Initialized RNAU with a WRONG metadata file.");
+        if (self.showProgress) {
+            [StatusBarNotification showWithMessage:NSLocalizedString(@"Error reading Metadata File.", nil) backgroundColor:[StatusBarNotification errorColor] autoHide:YES];
+        }
+        self.initializationOK = NO;
+        return;
+    }
+    NSDictionary* savedMetadata = [[NSUserDefaults standardUserDefaults] objectForKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
+    if (!savedMetadata) {
+        [[NSUserDefaults standardUserDefaults] setObject:localMetadata forKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
+    }
+    else {
+        if ([[savedMetadata objectForKey:@"version"] compare:[localMetadata objectForKey:@"version"] options:NSNumericSearch] == NSOrderedAscending) {
+            NSData* data = [NSData dataWithContentsOfURL:self.defaultJSCodeLocation];
+            NSString* filename = [NSString stringWithFormat:@"%@/%@", [self createCodeDirectory], @"main.jsbundle"];
+            
+            if ([data writeToFile:filename atomically:YES]) {
+                [[NSUserDefaults standardUserDefaults] setObject:localMetadata forKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
+            }
+        }
+    }
+    self.initializationOK = YES;
+}
+
 #pragma mark - Check updates
 
 - (void)performUpdateCheck {
+    if (!self.initializationOK) {
+        return;
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.showProgress) {
             [StatusBarNotification showWithMessage:NSLocalizedString(@"Checking for update.", nil) backgroundColor:[StatusBarNotification infoColor] autoHide:YES];
@@ -130,23 +173,22 @@ static bool isFirstAccess = YES;
         return;
     }
     NSError* error;
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    self.updateMetadata = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     if (error) {
         if (self.showProgress) {
             [StatusBarNotification showWithMessage:NSLocalizedString(@"Error reading Metadata JSON. Update aborted.", nil) backgroundColor:[StatusBarNotification errorColor] autoHide:YES];
         }
         return;
     }
-    NSString* versionToDownload = [json objectForKey:@"version"];
-    NSString* urlToDownload = [[json objectForKey:@"url"] objectForKey:@"url"];
-    NSString* minContainerVersion = [json objectForKey:@"minContainerVersion"];
-    BOOL isRelative = [[json objectForKey:@"url"] objectForKey:@"isRelative"];
+    NSString* versionToDownload = [self.updateMetadata objectForKey:@"version"];
+    NSString* urlToDownload = [[self.updateMetadata objectForKey:@"url"] objectForKey:@"url"];
+    NSString* minContainerVersion = [self.updateMetadata objectForKey:@"minContainerVersion"];
+    BOOL isRelative = [[self.updateMetadata objectForKey:@"url"] objectForKey:@"isRelative"];
     
     if ([self shouldDownloadUpdateWithVersion:versionToDownload forMinContainerVersion:minContainerVersion]) {
         if (self.showProgress) {
             [StatusBarNotification showWithMessage:NSLocalizedString(@"Downloading Update.", nil) backgroundColor:[StatusBarNotification infoColor] autoHide:YES];
         }
-        __tempCodeVersion = versionToDownload;
         if (isRelative) {
             urlToDownload = [self.hostname stringByAppendingString:urlToDownload];
         }
@@ -168,11 +210,13 @@ static bool isFirstAccess = YES;
      * First check for the version match. If we have the update version, then don't download.
      * Also, check what kind of updates the user wants.
      */
-    NSString* currentVersion = [[NSUserDefaults standardUserDefaults] objectForKey:ReactNativeAutoUpdaterCurrentJSCodeVersion];
-    if (!currentVersion) {
+    NSDictionary* currentMetadata = [[NSUserDefaults standardUserDefaults] objectForKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
+    if (!currentMetadata) {
         shouldDownload = YES;
     }
     else {
+        NSString* currentVersion = [currentMetadata objectForKey:@"version"];
+        
         int currentMajor, currentMinor, currentPatch, updateMajor, updateMinor, updatePatch;
         NSArray* currentComponents = [currentVersion componentsSeparatedByString:@"."];
         if (currentComponents.count == 0) {
@@ -330,7 +374,7 @@ static bool isFirstAccess = YES;
 }
 
 - (NSString*)containerVersion {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
 - (NSString*)libraryDirectory {
@@ -394,15 +438,8 @@ static bool isFirstAccess = YES;
     NSData* data = [NSData dataWithContentsOfURL:location];
     NSString* filename = [NSString stringWithFormat:@"%@/%@", [self createCodeDirectory], @"main.jsbundle"];
     
-    NSFileManager* fileManager = [NSFileManager defaultManager];
-    
-    if ([fileManager fileExistsAtPath:filename]) {
-        [[NSFileManager defaultManager] removeItemAtPath:filename error:&error];
-    }
-    
     if ([data writeToFile:filename atomically:YES]) {
-        [[NSUserDefaults standardUserDefaults] setObject:__tempCodeVersion forKey:ReactNativeAutoUpdaterCurrentJSCodeVersion];
-        __tempCodeVersion = nil;
+        [[NSUserDefaults standardUserDefaults] setObject:self.updateMetadata forKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
         if ([self.delegate respondsToSelector:@selector(ReactNativeAutoUpdater_updateDownloadedToURL:)]) {
             [self.delegate ReactNativeAutoUpdater_updateDownloadedToURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filename]]];
         }
