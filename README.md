@@ -59,10 +59,16 @@ Here's a GIF'ed screencast of `react-native-auto-updater` in action.
 4. In the Xcode Project Navigator, click the root project, and in `General` tab, look for `Linked Frameworks and Libraries`. Click on the `+` button at the bottom and add `libReactNativeAutoUpdater.a` from the list.
 5. Go to `Build Settings` tab and search for `Header Search Paths`. In the list, add `$(SRCROOT)/../node_modules/react-native-auto-updater` and select `recursive`.
 
-<img src="images/link_library.png" alt="Link Frameworks and Libraries" width="600" />
+<img src="images/1.png" alt="Add Files to Project" width="600" />
 
 
-<img src="images/add_header.png" alt="Header Search Paths" width="600" />
+<img src="images/2.png" alt="File Location" width="600" />
+
+
+<img src="images/3.png" alt="Link Frameworks and Libraries" width="600" />
+
+
+<img src="images/4.png" alt="Header Search Paths" width="600" />
 
 ### Android
 
