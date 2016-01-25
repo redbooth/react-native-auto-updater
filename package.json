@@ -23,5 +23,12 @@
   "devDependencies": {
     "react-native": ">=0.15.0"
     },
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "react-native",
+    "updates",
+    "dynamic",
+    "ios",
+    "android"
+  ],
 }
