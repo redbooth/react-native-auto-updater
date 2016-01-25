@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/cocoapods/l/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
 [![Platform](https://img.shields.io/cocoapods/p/ReactNativeAutoUpdater.svg?style=flat)](http://cocoapods.org/pods/ReactNativeAutoUpdater)
 
-<img src="rnau.png" alt="React-Native Auto-Updater" width="400" />
+<img src="images/rnau.png" alt="React-Native Auto-Updater" width="400" />
 
 ## About
 
@@ -58,6 +58,9 @@ Here's a GIF'ed screencast of `react-native-auto-updater` in action.
 3. Go to `node_modules` ➜ `react-native-image-picker` ➜ `iOS` ➜ select `ReactNativeAutoUpdater.xcodeproj`
 4. In the Xcode Project Navigator, click the root project, and in `General` tab, look for `Linked Frameworks and Libraries`. Click on the `+` button at the bottom and add `libReactNativeAutoUpdater.a` from the list.
 5. Go to `Build Settings` tab and search for `Header Search Paths`. In the list, add `$(SRCROOT)/../node_modules/react-native-auto-updater` and select `recursive`.
+
+<img src="images/link_library.png" alt="Link Frameworks and Libraries" width="400" />
+<img src="images/add_header.png" alt="Header Search Paths" width="400" />
 
 ### Android
 
