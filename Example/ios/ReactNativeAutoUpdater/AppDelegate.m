@@ -1,20 +1,19 @@
-//
-//  AppDelegate.m
-//  ReactNativeAutoUpdater
-//
-//  Created by Rahul Jiresal on 11/23/15.
-//  Copyright © 2015 Rahul Jiresal. All rights reserved.
-//
-
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
 
 #import "AppDelegate.h"
 
 #import "RCTRootView.h"
 
-#import <ReactNativeAutoUpdater/ReactNativeAutoUpdater.h>
+#import "ReactNativeAutoUpdater.h"
 
 #define JS_CODE_METADATA_URL @"https://www.dropbox.com/s/tc4jmkef48cmu87/update.json?raw=1"
-
 
 @interface AppDelegate() <ReactNativeAutoUpdaterDelegate>
 
@@ -24,10 +23,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  /**
-   *  Facebook's example app has two options for you to choose from. However, since we're just dealing with a
-   *  production version of the app, we don't need the jsCodeLocation to ever point to localhost:8081.
-   */
   NSURL* defaultJSCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   
   /**
@@ -46,9 +41,9 @@
   
   [updater setHostnameForRelativeDownloadURLs:@"https://www.dropbox.com"];
   [updater checkUpdate];
-
+  
   NSURL* latestJSCodeLocation = [updater latestJSCodeLocation];
-
+  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   self.window.rootViewController = rootViewController;

@@ -22,10 +22,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		89ADA739BD3072294FB5EFCC /* libPods-ReactNativeAutoUpdater_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 250384804D1B58B2BA7C1811 /* libPods-ReactNativeAutoUpdater_Tests.a */; };
-		B781E6321C517DD600F23A25 /* metadata.json in Resources */ = {isa = PBXBuildFile; fileRef = B781E6311C517DD600F23A25 /* metadata.json */; };
-		B7BE04071C05793A009381A2 /* libReactNativeAutoUpdater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BE04061C05793A009381A2 /* libReactNativeAutoUpdater.a */; };
-		C5FEB1E8616EDB106BEF633D /* libPods-ReactNativeAutoUpdater_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1197C7384152D561C046AB /* libPods-ReactNativeAutoUpdater_Example.a */; };
+		B781E79B1C53523B00F23A25 /* libReactNativeAutoUpdater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B781E79A1C5351B800F23A25 /* libReactNativeAutoUpdater.a */; };
+		B781E79E1C5352A200F23A25 /* metadata.json in Resources */ = {isa = PBXBuildFile; fileRef = B781E79C1C5352A200F23A25 /* metadata.json */; };
+		B781E79F1C5352A200F23A25 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B781E79D1C5352A200F23A25 /* main.jsbundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,16 +105,22 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		B781E7991C5351B800F23A25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B781E78B1C5351B800F23A25 /* ReactNativeAutoUpdater.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B781E74E1C52EC0100F23A25;
+			remoteInfo = ReactNativeAutoUpdater;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* ReactNativeAutoUpdater_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactNativeAutoUpdater_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* ReactNativeAutoUpdaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactNativeAutoUpdaterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ReactNativeAutoUpdaterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactNativeAutoUpdaterTests.m; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
@@ -128,16 +133,11 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ReactNativeAutoUpdater/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ReactNativeAutoUpdater/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		250384804D1B58B2BA7C1811 /* libPods-ReactNativeAutoUpdater_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactNativeAutoUpdater_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		46E85582B8E47A9093773D38 /* Pods-ReactNativeAutoUpdater_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeAutoUpdater_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactNativeAutoUpdater_Tests/Pods-ReactNativeAutoUpdater_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		6A54795BE867DC2545DBF081 /* Pods-ReactNativeAutoUpdater_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeAutoUpdater_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactNativeAutoUpdater_Example/Pods-ReactNativeAutoUpdater_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		6BF41259C130F8EE9AF78CCD /* Pods-ReactNativeAutoUpdater_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeAutoUpdater_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactNativeAutoUpdater_Tests/Pods-ReactNativeAutoUpdater_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		9B1197C7384152D561C046AB /* libPods-ReactNativeAutoUpdater_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactNativeAutoUpdater_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0D753C62B2A59120907F58B /* Pods-ReactNativeAutoUpdater_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeAutoUpdater_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactNativeAutoUpdater_Example/Pods-ReactNativeAutoUpdater_Example.release.xcconfig"; sourceTree = "<group>"; };
-		B781E6311C517DD600F23A25 /* metadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metadata.json; sourceTree = "<group>"; };
-		B7BE04061C05793A009381A2 /* libReactNativeAutoUpdater.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libReactNativeAutoUpdater.a; path = "Pods/../build/Debug-iphoneos/libReactNativeAutoUpdater.a"; sourceTree = "<group>"; };
+		B781E78B1C5351B800F23A25 /* ReactNativeAutoUpdater.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeAutoUpdater.xcodeproj; path = "../node_modules/react-native-auto-updater/ios/ReactNativeAutoUpdater.xcodeproj"; sourceTree = "<group>"; };
+		B781E79C1C5352A200F23A25 /* metadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metadata.json; sourceTree = "<group>"; };
+		B781E79D1C5352A200F23A25 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +145,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89ADA739BD3072294FB5EFCC /* libPods-ReactNativeAutoUpdater_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7BE04071C05793A009381A2 /* libReactNativeAutoUpdater.a in Frameworks */,
+				B781E79B1C53523B00F23A25 /* libReactNativeAutoUpdater.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -164,7 +163,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				C5FEB1E8616EDB106BEF633D /* libPods-ReactNativeAutoUpdater_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,8 +245,8 @@
 		13B07FAE1A68108700A75B9A /* ReactNativeAutoUpdater */ = {
 			isa = PBXGroup;
 			children = (
-				B781E6311C517DD600F23A25 /* metadata.json */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				B781E79C1C5352A200F23A25 /* metadata.json */,
+				B781E79D1C5352A200F23A25 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -267,27 +265,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		37313C0B1ABB5FB74B404E02 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6A54795BE867DC2545DBF081 /* Pods-ReactNativeAutoUpdater_Example.debug.xcconfig */,
-				A0D753C62B2A59120907F58B /* Pods-ReactNativeAutoUpdater_Example.release.xcconfig */,
-				6BF41259C130F8EE9AF78CCD /* Pods-ReactNativeAutoUpdater_Tests.debug.xcconfig */,
-				46E85582B8E47A9093773D38 /* Pods-ReactNativeAutoUpdater_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		617DF09F036FBBC33AEC6081 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B7BE04061C05793A009381A2 /* libReactNativeAutoUpdater.a */,
-				9B1197C7384152D561C046AB /* libPods-ReactNativeAutoUpdater_Example.a */,
-				250384804D1B58B2BA7C1811 /* libPods-ReactNativeAutoUpdater_Tests.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +276,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B781E78B1C5351B800F23A25 /* ReactNativeAutoUpdater.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -328,8 +306,6 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ReactNativeAutoUpdaterTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
-				37313C0B1ABB5FB74B404E02 /* Pods */,
-				617DF09F036FBBC33AEC6081 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -339,7 +315,15 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* ReactNativeAutoUpdater.app */,
-				00E356EE1AD99517003FC87E /* ReactNativeAutoUpdater_Tests.xctest */,
+				00E356EE1AD99517003FC87E /* ReactNativeAutoUpdaterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B781E78C1C5351B800F23A25 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B781E79A1C5351B800F23A25 /* libReactNativeAutoUpdater.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -347,44 +331,38 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* ReactNativeAutoUpdater_Tests */ = {
+		00E356ED1AD99517003FC87E /* ReactNativeAutoUpdaterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ReactNativeAutoUpdater_Tests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ReactNativeAutoUpdaterTests" */;
 			buildPhases = (
-				99C5F5CC3CB9B4658B1E4B5F /* Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				2F50B06D74B88D43FDE99605 /* Embed Pods Frameworks */,
-				CE33E914618C02442F11AD93 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = ReactNativeAutoUpdater_Tests;
+			name = ReactNativeAutoUpdaterTests;
 			productName = ReactNativeAutoUpdaterTests;
-			productReference = 00E356EE1AD99517003FC87E /* ReactNativeAutoUpdater_Tests.xctest */;
+			productReference = 00E356EE1AD99517003FC87E /* ReactNativeAutoUpdaterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* ReactNativeAutoUpdater_Example */ = {
+		13B07F861A680F5B00A75B9A /* ReactNativeAutoUpdater */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReactNativeAutoUpdater_Example" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReactNativeAutoUpdater" */;
 			buildPhases = (
-				DB8145D3F35FD0F7598E5122 /* Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				E8F9BD964426276D57C5EF56 /* Embed Pods Frameworks */,
-				FC0B047D68C075094B97DE8E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ReactNativeAutoUpdater_Example;
+			name = ReactNativeAutoUpdater;
 			productName = "Hello World";
 			productReference = 13B07F961A680F5B00A75B9A /* ReactNativeAutoUpdater.app */;
 			productType = "com.apple.product-type.application";
@@ -456,11 +434,15 @@
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
+				{
+					ProductGroup = B781E78C1C5351B800F23A25 /* Products */;
+					ProjectRef = B781E78B1C5351B800F23A25 /* ReactNativeAutoUpdater.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* ReactNativeAutoUpdater_Example */,
-				00E356ED1AD99517003FC87E /* ReactNativeAutoUpdater_Tests */,
+				13B07F861A680F5B00A75B9A /* ReactNativeAutoUpdater */,
+				00E356ED1AD99517003FC87E /* ReactNativeAutoUpdaterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -536,6 +518,13 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B781E79A1C5351B800F23A25 /* libReactNativeAutoUpdater.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeAutoUpdater.a;
+			remoteRef = B781E7991C5351B800F23A25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -551,8 +540,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				B781E6321C517DD600F23A25 /* metadata.json in Resources */,
+				B781E79E1C5352A200F23A25 /* metadata.json in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				B781E79F1C5352A200F23A25 /* main.jsbundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,7 +551,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -569,99 +559,9 @@
 			name = "Bundle React Native code and images";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "../node_modules/react-native/packager/react-native-xcode.sh";
-		};
-		2F50B06D74B88D43FDE99605 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactNativeAutoUpdater_Tests/Pods-ReactNativeAutoUpdater_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		99C5F5CC3CB9B4658B1E4B5F /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CE33E914618C02442F11AD93 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactNativeAutoUpdater_Tests/Pods-ReactNativeAutoUpdater_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DB8145D3F35FD0F7598E5122 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E8F9BD964426276D57C5EF56 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactNativeAutoUpdater_Example/Pods-ReactNativeAutoUpdater_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FC0B047D68C075094B97DE8E /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactNativeAutoUpdater_Example/Pods-ReactNativeAutoUpdater_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -688,7 +588,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* ReactNativeAutoUpdater_Example */;
+			target = 13B07F861A680F5B00A75B9A /* ReactNativeAutoUpdater */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -708,7 +608,6 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BF41259C130F8EE9AF78CCD /* Pods-ReactNativeAutoUpdater_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -729,7 +628,6 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46E85582B8E47A9093773D38 /* Pods-ReactNativeAutoUpdater_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -747,7 +645,6 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A54795BE867DC2545DBF081 /* Pods-ReactNativeAutoUpdater_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEAD_CODE_STRIPPING = NO;
@@ -755,13 +652,10 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native-auto-updater/**",
 				);
 				INFOPLIST_FILE = ReactNativeAutoUpdater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ReactNativeAutoUpdater;
 			};
@@ -769,20 +663,16 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0D753C62B2A59120907F58B /* Pods-ReactNativeAutoUpdater_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native-auto-updater/**",
 				);
 				INFOPLIST_FILE = ReactNativeAutoUpdater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ReactNativeAutoUpdater;
 			};
@@ -877,7 +767,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ReactNativeAutoUpdater_Tests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ReactNativeAutoUpdaterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -886,7 +776,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReactNativeAutoUpdater_Example" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReactNativeAutoUpdater" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,

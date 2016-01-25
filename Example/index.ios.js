@@ -3,17 +3,18 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
-
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
+  Component,
   StyleSheet,
   Text,
-  View,
-} = React;
+  View
+} from 'react-native';
 
-var ReactNativeAutoUpdater = React.createClass({
-  render: function() {
+var ReactNativeAutoUpdater = require('react-native-auto-updater');
+
+class RNAU_Example extends Component {
+  render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -24,14 +25,15 @@ var ReactNativeAutoUpdater = React.createClass({
         </Text>
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          Cmd+D or shake for dev menu.
+          Version { ReactNativeAutoUpdater.jsCodeVersion() }
         </Text>
       </View>
     );
   }
-});
+}
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -50,4 +52,4 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('ReactNativeAutoUpdater', () => ReactNativeAutoUpdater);
+AppRegistry.registerComponent('ReactNativeAutoUpdater', () => RNAU_Example);

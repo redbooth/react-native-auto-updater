@@ -8,11 +8,12 @@
 
 #import "ReactNativeAutoUpdater.h"
 #import "StatusBarNotification.h"
+#import "RCTBridge.h"
 
 NSString* const ReactNativeAutoUpdaterLastUpdateCheckDate = @"ReactNativeAutoUpdater Last Update Check Date";
 NSString* const ReactNativeAutoUpdaterCurrentJSCodeMetadata = @"ReactNativeAutoUpdater Current JS Code Metadata";
 
-@interface ReactNativeAutoUpdater() <NSURLSessionDownloadDelegate>
+@interface ReactNativeAutoUpdater() <NSURLSessionDownloadDelegate, RCTBridgeModule>
 
 @property NSURL* defaultJSCodeLocation;
 @property NSURL* defaultMetadataFileLocation;
@@ -28,6 +29,8 @@ NSString* const ReactNativeAutoUpdaterCurrentJSCodeMetadata = @"ReactNativeAutoU
 @end
 
 @implementation ReactNativeAutoUpdater
+
+RCT_EXPORT_MODULE()
 
 static ReactNativeAutoUpdater *RNAUTOUPDATER_SINGLETON = nil;
 static bool isFirstAccess = YES;
@@ -81,6 +84,19 @@ static bool isFirstAccess = YES;
     self.showProgress = YES;
     self.allowCellularDataUse = NO;
     self.updateType = ReactNativeAutoUpdaterMinorUpdate;
+}
+
+#pragma mark - JS methods
+
+- (NSDictionary *)constantsToExport {
+    NSDictionary* metadata = [[NSUserDefaults standardUserDefaults] objectForKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
+    NSString* version = @"";
+    if (metadata) {
+        version = [metadata objectForKey:@"version"];
+    }
+    return @{
+            @"jsCodeVersion": version
+        };
 }
 
 #pragma mark - initialize Singleton

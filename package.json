@@ -1,0 +1,27 @@
+{
+  "name": "react-native-auto-updater",
+  "version": "0.1.0",
+  "description": "A library to manage dynamic updates to React Native apps. Available as an NPM Package.",
+  "main": "react-native-auto-updater.js",
+  "author": "Rahul Jiresal <rahul@aerofs.com> (https://github.com/rahuljiresal)",
+  "files": [
+    "ios/ReactNativeAutoUpdater.xcodeproj",
+    "react-native-auto-updater.js",
+    "README.md",
+    "ios/ReactNativeAutoUpdater/ReactNativeAutoUpdater.h",
+    "ios/ReactNativeAutoUpdater/ReactNativeAutoUpdater.m",
+    "ios/ReactNativeAutoUpdater/StatusBarNotification.h",
+    "ios/ReactNativeAutoUpdater/StatusBarNotification.m"
+  ],
+  "peerDependencies": {
+    "react-native": ">=0.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aerofs/react-native-auto-updater.git"
+  },
+  "devDependencies": {
+    "react-native": ">=0.15.0"
+    },
+  "license": "MIT"
+}
