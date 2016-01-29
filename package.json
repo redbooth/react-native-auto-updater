@@ -1,6 +1,6 @@
 {
   "name": "react-native-auto-updater",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A library to manage dynamic updates to React Native apps. Available as an NPM Package.",
   "main": "react-native-auto-updater.js",
   "author": "Rahul Jiresal <rahul@aerofs.com> (https://github.com/rahuljiresal)",
@@ -30,5 +30,5 @@
     "dynamic",
     "ios",
     "android"
-  ],
+  ]
 }
