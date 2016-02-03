@@ -10,10 +10,13 @@
 At [AeroFS](http://www.aerofs.com), we're close to shipping our first React Native app. Once the app is out, we would want to send updates over the air to bypass the sluggish AppStore review process, and speed up release cycles. We've built `react-native-auto-updater` to do just that. It was built as a part of our [2015 Thanksgiving Hackathon](https://www.aerofs.com/blog/how-we-run-hackathons/).
 
 > **Does Apple permit this?**
-
 >
-
 > Yes! [Section 3.3.2 of the iOS Developer Program](https://developer.apple.com/programs/ios/information/iOS_Program_Information_4_3_15.pdf) allows it "provided that such scripts and code do not change the primary purpose of the Application by providing features or functionality that are inconsistent with the intended and advertised purpose of the Application."
+
+
+> **Does Google permit this?**
+>
+> Of course!
 
 React Native `jsbundle` can be easily over a couple of megabytes. On cellular connections, downloading them more often than what is needed is not a good idea. To tackle that problem, we need to decide if the bundle needs to be downloaded at all.
 
@@ -51,6 +54,8 @@ Here's a GIF'ed screencast of `react-native-auto-updater` in action.
 
 ## Installation
 
+##### NOTE — ReactNativeAutoUpdater requires a minimum version of 0.18 of React Native. 
+
 ### iOS
 
 1. `npm install react-native-auto-updater --save`
@@ -62,19 +67,49 @@ Here's a GIF'ed screencast of `react-native-auto-updater` in action.
 <img src="images/1.png" alt="Add Files to Project" width="600" />
 
 
+
 <img src="images/2.png" alt="File Location" width="600" />
 
 
+
 <img src="images/3.png" alt="Link Frameworks and Libraries" width="600" />
+
 
 
 <img src="images/4.png" alt="Header Search Paths" width="600" />
 
 ### Android
 
-Coming soon.
+1. In `android/settings.gradle`, add this
+   
+   ``` java
+   // more stuff
+   include ':ReactNativeAutoUpdater', ':app'
+   project(':ReactNativeAutoUpdater').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-auto-updater/android')
+   ```
+   
+2. In `android/app/build.gradle`, add this
+   
+   ``` java
+    // more stuff
+    dependencies {
+      // more dependencies
+      compile project(':ReactNativeAutoUpdater')
+    }
+   ```
 
+3. In `android/app/build.gradle`, add this
 
+  ```java
+  android {
+    // more stuff
+    // add this
+    packagingOptions {
+      exclude 'META-INF/LICENSE.txt'
+      exclude 'META-INF/NOTICE.txt'
+    }
+  }
+  ```
 
 ## Usage
 
@@ -173,9 +208,108 @@ ReactNativeAutoUpdater *updater = [ReactNativeAutoUpdater sharedInstance];
 
 ### Android
 
-Coming soon.
-
-
+1. Extend your `MainActivity.java` from `ReactNativeAutoUpdaterActivity` instead of `ReactActivity`
+   
+   ``` java
+   public class MainActivity extends ReactNativeAutoUpdaterActivity {
+   
+   ```
+   
+2. Implement the required methods
+   
+   ``` java
+   
+    /**
+     *  Name of the JS Bundle file shipped with the app.
+     *  This file has to be added as an Android Asset.
+     * */
+    @Nullable
+    @Override
+    protected String getBundleAssetName() {
+        return "main.android.jsbundle";
+    }
+   
+    /**
+     *  URL for the metadata of the update.
+     * */
+    @Override
+    protected String getUpdateMetadataUrl() {
+        return "https://www.aerofs.com/u/8691535/update.android.json";
+    }
+   
+    /**
+     * Name of the metadata file shipped with the app.
+     * This metadata is used to compare the shipped JS code against the updates.
+     * */
+    @Override
+    protected String getMetadataAssetName() {
+        return "metadata.android.json";
+    }
+   ```
+   
+3. (Optional) Implement the optional methods
+   
+   ``` java
+    /**
+     *  If your updates metadata JSON has a relative URL for downloading 
+     *  the JS bundle, set this hostname.
+     * */
+    @Override
+    protected String getHostnameForRelativeDownloadURLs() {
+        return "https://www.aerofs.com";
+    }
+   
+    /**
+     *  Decide what type of updates to download.
+     * Available options - 
+     *  MAJOR - will download only if major version number changes
+     *  MINOR - will download if major or minor version number changes
+     *  PATCH - will download for any version change
+     * default value - PATCH
+     * */
+    @Override
+    protected ReactNativeAutoUpdaterUpdateType getAllowedUpdateType() {
+        return ReactNativeAutoUpdater.ReactNativeAutoUpdaterUpdateType.MINOR;
+    }
+   
+    /**
+     *  Decide how frequently to check for updates.
+     * Available options - 
+     *  EACH_TIME - each time the app starts
+     *  DAILY     - maximum once per day
+     *  WEEKLY    - maximum once per week
+     * default value - EACH_TIME
+     * */
+    @Override
+    protected ReactNativeAutoUpdaterFrequency getUpdateFrequency() {
+        return ReactNativeAutoUpdaterFrequency.EACH_TIME;
+    }
+   
+    /**
+     *  To show progress during the update process.
+     * */
+    @Override
+    protected boolean getShowProgress() {
+        return true;
+    }
+   ```
+   
+4. (Optional) Register Module in `MainActivity.java` 
+   
+   This is required if you want to get the currently installed JS code version in your JS code.
+   
+   ``` java
+    /**
+     * A list of packages used by the app. If the app uses additional views
+     * or modules besides the default ones, add more packages here.
+     */
+    @Override
+    protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+                new ReactNativeAutoUpdaterPackage(), // Add the ReactNativeAutoUpdater Package
+                new MainReactPackage());
+    }
+   ```
 
 ### JS (optional, common for iOS and Android)
 

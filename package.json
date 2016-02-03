@@ -1,6 +1,6 @@
 {
   "name": "react-native-auto-updater",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A library to manage dynamic updates to React Native apps. Available as an NPM Package.",
   "main": "react-native-auto-updater.js",
   "author": "Rahul Jiresal <rahul@aerofs.com> (https://github.com/rahuljiresal)",
@@ -11,17 +11,24 @@
     "ios/ReactNativeAutoUpdater/ReactNativeAutoUpdater.h",
     "ios/ReactNativeAutoUpdater/ReactNativeAutoUpdater.m",
     "ios/ReactNativeAutoUpdater/StatusBarNotification.h",
-    "ios/ReactNativeAutoUpdater/StatusBarNotification.m"
+    "ios/ReactNativeAutoUpdater/StatusBarNotification.m",
+    "android/build.gradle",
+    "android/src/main/AndroidManifest.xml",
+    "android/src/main/java/com/aerofs/reactnativeautoupdater/ReactNativeAutoUpdater.java",
+    "android/src/main/java/com/aerofs/reactnativeautoupdater/ReactNativeAutoUpdaterActivity.java",
+    "android/src/main/java/com/aerofs/reactnativeautoupdater/ReactNativeAutoUpdaterPackage.java",
+    "android/src/main/java/com/aerofs/reactnativeautoupdater/ReactNativeAutoUpdaterModule.java",
+    "android/src/main/java/com/aerofs/reactnativeautoupdater/Version.java"
   ],
   "peerDependencies": {
-    "react-native": ">=0.15.0"
+    "react-native": ">=0.18.0"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:aerofs/react-native-auto-updater.git"
   },
   "devDependencies": {
-    "react-native": ">=0.15.0"
+    "react-native": ">=0.18.0"
     },
   "license": "MIT",
   "keywords": [

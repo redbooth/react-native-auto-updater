@@ -11,7 +11,9 @@ import React, {
   View
 } from 'react-native';
 
-class ReactNativeAutoUpdater extends Component {
+var ReactNativeAutoUpdater = require('react-native-auto-updater');
+
+class RNAU_Example extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -22,7 +24,8 @@ class ReactNativeAutoUpdater extends Component {
           To get started, edit index.android.js
         </Text>
         <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
+          For more info, check ReactNativeAutoUpdater.
+          Version { ReactNativeAutoUpdater.jsCodeVersion() }
         </Text>
       </View>
     );
@@ -48,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('ReactNativeAutoUpdater', () => ReactNativeAutoUpdater);
+AppRegistry.registerComponent('ReactNativeAutoUpdater', () => RNAU_Example);
