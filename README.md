@@ -49,7 +49,7 @@ Here's what the fields in the JSON mean:
 Here's a GIF'ed screencast of `react-native-auto-updater` in action.
 
 ![rn-auto-updater](https://cloud.githubusercontent.com/assets/216346/12154339/c0e6e432-b473-11e5-8aa9-29ef89029c08.gif)
-
+![rn-auto-updater-android](https://raw.githubusercontent.com/aerofs/react-native-auto-updater/master/images/android.gif)
 
 
 ## Installation
