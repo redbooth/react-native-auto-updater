@@ -3,6 +3,7 @@ package com.aerofs.reactnativeautoupdater;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
 import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdater.ReactNativeAutoUpdaterUpdateType;
 import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdater.ReactNativeAutoUpdaterFrequency;
 import com.facebook.react.ReactActivity;
@@ -10,7 +11,7 @@ import com.facebook.react.ReactActivity;
 import javax.annotation.Nullable;
 
 /**
- * Created by rahul on 1/29/16.
+ * @author rahul
  */
 public abstract class ReactNativeAutoUpdaterActivity extends ReactActivity
         implements ReactNativeAutoUpdater.Interface {
@@ -63,20 +64,26 @@ public abstract class ReactNativeAutoUpdaterActivity extends ReactActivity
     public void updateFinished() {
         try {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setTitle("Update Downloaded");
+            alertDialogBuilder.setTitle(R.string.auto_updater_downloaded_title);
             alertDialogBuilder
-                    .setMessage("An update was downloaded. Do you want to apply it now?")
+                    .setMessage(R.string.auto_updater_downloaded_message)
                     .setCancelable(false)
-                    .setPositiveButton("Now", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            ReactNativeAutoUpdaterActivity.this.recreate();
-                        }
-                    })
-                    .setNegativeButton("Later", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
+                    .setPositiveButton(
+                            R.string.auto_updater_downloaded_now,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    ReactNativeAutoUpdaterActivity.this.recreate();
+                                }
+                            }
+                    )
+                    .setNegativeButton(
+                            R.string.auto_updater_downloaded_later,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            }
+                    );
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
