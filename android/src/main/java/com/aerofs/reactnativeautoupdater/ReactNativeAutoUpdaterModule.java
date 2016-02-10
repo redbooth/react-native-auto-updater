@@ -12,7 +12,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * Created by rahul on 2/2/16.
+ * @author rahul
  */
 public class ReactNativeAutoUpdaterModule extends ReactContextBaseJavaModule {
 
@@ -32,7 +32,9 @@ public class ReactNativeAutoUpdaterModule extends ReactContextBaseJavaModule {
     @Override
     public Map<String, Object> getConstants() {
         Map<String, Object> constants = new HashMap<String, Object>();
-        SharedPreferences prefs = this.context.getSharedPreferences(ReactNativeAutoUpdater.RNAU_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences prefs = this.context.getSharedPreferences(
+                ReactNativeAutoUpdater.RNAU_SHARED_PREFERENCES, Context.MODE_PRIVATE
+        );
         String version =  prefs.getString(ReactNativeAutoUpdater.RNAU_STORED_VERSION, null);
         constants.put("jsCodeVersion", version);
         return constants;

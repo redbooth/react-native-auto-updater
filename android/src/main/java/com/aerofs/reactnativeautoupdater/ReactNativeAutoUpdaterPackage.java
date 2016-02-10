@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by rahul on 1/29/16.
+ * @author rahul
  */
 public class ReactNativeAutoUpdaterPackage implements ReactPackage {
 

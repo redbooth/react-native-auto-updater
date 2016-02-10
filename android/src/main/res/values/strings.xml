@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_updater_downloaded_title">Update Downloaded</string>
+    <string name="auto_updater_downloaded_message">An update was downloaded. Do you want to apply it now?</string>
+    <string name="auto_updater_downloaded_now">Now</string>
+    <string name="auto_updater_downloaded_later">Later</string>
+
+    <string name="auto_updater_checking">Checking for update...</string>
+    <string name="auto_updater_downloading">Downloading update...</string>
+    <string name="auto_updater_no_hostname">No hostname provided for relative downloads. Aborting</string>
+    <string name="auto_updater_up_to_date">Already Up to Date</string>
+    <string name="auto_updater_no_metadata">Received no Update Metadata. Aborting</string>
+    <string name="auto_updater_invalid_metadata">Invalid Update Metadata. Aborting</string>
+    <string name="auto_updater_downloading_error">Error while downloading update</string>
+    <string name="auto_updater_downloading_success">Update Successful</string>
+</resources>
