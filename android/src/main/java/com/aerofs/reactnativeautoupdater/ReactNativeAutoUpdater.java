@@ -7,8 +7,6 @@ import android.os.AsyncTask;
 import android.os.PowerManager;
 import android.widget.Toast;
 
-import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -108,15 +106,15 @@ public class ReactNativeAutoUpdater {
         }
 
         SharedPreferences prefs = context.getSharedPreferences(RNAU_SHARED_PREFERENCES, Context.MODE_PRIVATE);
-        DateTime lastUpdateDate = new DateTime(prefs.getLong(RNAU_LAST_UPDATE_TIMESTAMP, 0));
-        DateTime rightNow = new DateTime();
-        int days = Days.daysBetween(lastUpdateDate, rightNow).getDays();
+
+        long msSinceUpdate = System.currentTimeMillis() - prefs.getLong(RNAU_LAST_UPDATE_TIMESTAMP, 0);
+        int daysSinceUpdate = (int) (msSinceUpdate / 1000 / 60 / 60 / 24);
 
         switch (this.updateFrequency) {
             case DAILY:
-                return days >= 1;
+                return daysSinceUpdate >= 1;
             case WEEKLY:
-                return days >= 7;
+                return daysSinceUpdate >= 7;
             default:
                 return true;
         }
