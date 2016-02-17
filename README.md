@@ -59,7 +59,7 @@ Here's a GIF'ed screencast of `react-native-auto-updater` in action.
 ### iOS
 
 1. `npm install react-native-auto-updater --save`
-2. In the XCode's "Project navigator", right click on your project's Libraries folder ➜ Add Files to _"Your Project Name"_
+2. In the Xcode's "Project navigator", right click on your project's Libraries folder ➜ Add Files to _"Your Project Name"_
 3. Go to `node_modules` ➜ `react-native-image-picker` ➜ `iOS` ➜ select `ReactNativeAutoUpdater.xcodeproj`
 4. In the Xcode Project Navigator, click the root project, and in `General` tab, look for `Linked Frameworks and Libraries`. Click on the `+` button at the bottom and add `libReactNativeAutoUpdater.a` from the list.
 5. Go to `Build Settings` tab and search for `Header Search Paths`. In the list, add `$(SRCROOT)/../node_modules/react-native-auto-updater` and select `recursive`.
