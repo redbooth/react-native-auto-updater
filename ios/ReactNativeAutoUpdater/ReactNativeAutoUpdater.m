@@ -199,7 +199,7 @@ static bool isFirstAccess = YES;
     NSString* versionToDownload = [self.updateMetadata objectForKey:@"version"];
     NSString* urlToDownload = [[self.updateMetadata objectForKey:@"url"] objectForKey:@"url"];
     NSString* minContainerVersion = [self.updateMetadata objectForKey:@"minContainerVersion"];
-    BOOL isRelative = [[self.updateMetadata objectForKey:@"url"] objectForKey:@"isRelative"];
+    BOOL isRelative = [[[self.updateMetadata objectForKey:@"url"] objectForKey:@"isRelative"] boolValue];
     
     if ([self shouldDownloadUpdateWithVersion:versionToDownload forMinContainerVersion:minContainerVersion]) {
         if (self.showProgress) {
