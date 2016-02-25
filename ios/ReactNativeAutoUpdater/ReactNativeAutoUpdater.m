@@ -456,8 +456,9 @@ static bool isFirstAccess = YES;
     
     if ([data writeToFile:filename atomically:YES]) {
         [[NSUserDefaults standardUserDefaults] setObject:self.updateMetadata forKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
-      if ([self.delegate respondsToSelector:@selector(ReactNativeAutoUpdater:updateDownloadedToURL:)]) {
-        [self.delegate ReactNativeAutoUpdater:self updateDownloadedToURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filename]]];
+      if ([self.delegate respondsToSelector:@selector(ReactNativeAutoUpdater:updateDownloadedToURL:currentVersion:)]) {
+        NSString* currentVersion = self.updateMetadata[@"version"];
+        [self.delegate ReactNativeAutoUpdater:self updateDownloadedToURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filename]] currentVersion:currentVersion];
       }
     }
     else {
