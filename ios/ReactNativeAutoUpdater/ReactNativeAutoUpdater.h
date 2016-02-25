@@ -16,11 +16,12 @@ typedef NS_ENUM(NSUInteger, ReactNativeAutoUpdaterUpdateType)
   ReactNativeAutoUpdaterPatchUpdate,       // Updates are applied if major, minor or patch version changes
 };
 
+@class ReactNativeAutoUpdater;
 
 @protocol ReactNativeAutoUpdaterDelegate <NSObject>
 
-- (void)ReactNativeAutoUpdater_updateDownloadedToURL:(NSURL*)url;
-- (void)ReactNativeAutoUpdater_updateDownloadFailed;
+- (void)ReactNativeAutoUpdater:(ReactNativeAutoUpdater *)reactiveNativeAutoUpdater updateDownloadedToURL:(NSURL*)url;
+- (void)ReactNativeAutoUpdater:(ReactNativeAutoUpdater *)reactiveNativeAutoUpdater updateDownloadFailed:(NSError *)error;
 
 @end
 

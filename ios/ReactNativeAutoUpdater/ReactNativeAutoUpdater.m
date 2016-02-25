@@ -456,9 +456,9 @@ static bool isFirstAccess = YES;
     
     if ([data writeToFile:filename atomically:YES]) {
         [[NSUserDefaults standardUserDefaults] setObject:self.updateMetadata forKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
-        if ([self.delegate respondsToSelector:@selector(ReactNativeAutoUpdater_updateDownloadedToURL:)]) {
-            [self.delegate ReactNativeAutoUpdater_updateDownloadedToURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filename]]];
-        }
+      if ([self.delegate respondsToSelector:@selector(ReactNativeAutoUpdater:updateDownloadedToURL:)]) {
+        [self.delegate ReactNativeAutoUpdater:self updateDownloadedToURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filename]]];
+      }
     }
     else {
         NSLog(@"[ReactNativeAutoUpdater]: Update save failed - %@.", error.localizedDescription);
@@ -468,6 +468,9 @@ static bool isFirstAccess = YES;
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     if (error) {
         NSLog(@"[ReactNativeAutoUpdater]: %@", error.localizedDescription);
+      if ([self.delegate respondsToSelector:@selector(ReactNativeAutoUpdater:updateDownloadFailed:)]) {
+        [self.delegate ReactNativeAutoUpdater:self updateDownloadFailed:error];
+      }
     }
 }
 
