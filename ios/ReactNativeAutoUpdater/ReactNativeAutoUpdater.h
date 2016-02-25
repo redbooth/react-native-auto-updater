@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, ReactNativeAutoUpdaterUpdateType)
 
 @interface ReactNativeAutoUpdater : NSObject
 
-@property id<ReactNativeAutoUpdaterDelegate> delegate;
+@property (weak) id<ReactNativeAutoUpdaterDelegate> delegate;
 
 /**
  *  Returns the singleton instance of ReactNativeAutoUpdater
