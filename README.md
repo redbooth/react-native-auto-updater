@@ -208,14 +208,27 @@ ReactNativeAutoUpdater *updater = [ReactNativeAutoUpdater sharedInstance];
 
 ### Android
 
-1. Extend your `MainActivity.java` from `ReactNativeAutoUpdaterActivity` instead of `ReactActivity`
+1. Import the needed classes
    
    ``` java
+   import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdater;
+   import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdater.ReactNativeAutoUpdaterUpdateType;
+   import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdater.ReactNativeAutoUpdaterFrequency;
+   import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdaterActivity;
+   import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdaterPackage;
+
+   import javax.annotation.Nullable;
+   ```
+
+2. Extend your `MainActivity.java` from `ReactNativeAutoUpdaterActivity` instead of `ReactActivity`
+   
+   ``` java
+   
    public class MainActivity extends ReactNativeAutoUpdaterActivity {
    
    ```
    
-2. Implement the required methods
+3. Implement the required methods
    
    ``` java
    
@@ -247,7 +260,7 @@ ReactNativeAutoUpdater *updater = [ReactNativeAutoUpdater sharedInstance];
     }
    ```
    
-3. (Optional) Implement the optional methods
+4. (Optional) Implement the optional methods
    
    ``` java
     /**
@@ -294,7 +307,7 @@ ReactNativeAutoUpdater *updater = [ReactNativeAutoUpdater sharedInstance];
     }
    ```
    
-4. (Optional) Register Module in `MainActivity.java` 
+5. (Optional) Register Module in `MainActivity.java` 
    
    This is required if you want to get the currently installed JS code version in your JS code.
    
