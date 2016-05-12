@@ -7,6 +7,10 @@ import android.os.AsyncTask;
 import android.os.PowerManager;
 import android.widget.Toast;
 
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -275,21 +279,19 @@ public class ReactNativeAutoUpdater {
             JSONObject metadata = null;
             try {
                 URL url = new URL(params[0]);
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url(url)
+                        .build();
 
-                BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-                StringBuilder total = new StringBuilder();
-                String line;
-                while ((line = in.readLine()) != null) {
-                    total.append(line);
-                }
-                metadataStr = total.toString();
+                Response response = client.newCall(request).execute();
+                metadataStr = response.body().string();
                 if (!metadataStr.isEmpty()) {
                     metadata = new JSONObject(metadataStr);
                 } else {
                     ReactNativeAutoUpdater.this.showProgressToast(R.string.auto_updater_no_metadata);
                 }
             } catch (Exception e) {
-                ReactNativeAutoUpdater.this.showProgressToast(R.string.auto_updater_invalid_metadata);
                 e.printStackTrace();
             }
             return metadata;
@@ -297,7 +299,11 @@ public class ReactNativeAutoUpdater {
 
         @Override
         protected void onPostExecute(JSONObject jsonObject) {
-            ReactNativeAutoUpdater.this.verifyMetadata(jsonObject);
+            if (jsonObject == null) {
+                ReactNativeAutoUpdater.this.showProgressToast(R.string.auto_updater_invalid_metadata);
+            } else {
+                ReactNativeAutoUpdater.this.verifyMetadata(jsonObject);
+            }
         }
     }
 
@@ -389,4 +395,3 @@ public class ReactNativeAutoUpdater {
         void updateFinished();
     }
 }
-
