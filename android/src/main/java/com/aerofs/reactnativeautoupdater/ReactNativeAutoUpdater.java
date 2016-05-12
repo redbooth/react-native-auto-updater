@@ -262,7 +262,7 @@ public class ReactNativeAutoUpdater {
     private void showProgressToast(int message) {
         if (this.showProgress) {
             int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, message, duration);
+            //Toast toast = Toast.makeText(context, message, duration);
             //toast.show();
         }
     }
