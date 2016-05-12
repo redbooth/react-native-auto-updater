@@ -299,7 +299,11 @@ public class ReactNativeAutoUpdater {
 
         @Override
         protected void onPostExecute(JSONObject jsonObject) {
-            ReactNativeAutoUpdater.this.verifyMetadata(jsonObject);
+            if (jsonObject == null) {
+                ReactNativeAutoUpdater.this.showProgressToast(R.string.auto_updater_invalid_metadata);
+            } else {
+                ReactNativeAutoUpdater.this.verifyMetadata(jsonObject);
+            }
         }
     }
 
