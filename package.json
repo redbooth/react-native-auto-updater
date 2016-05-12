@@ -15,6 +15,7 @@
     "android/build.gradle",
     "android/src/main/AndroidManifest.xml",
     "android/src/main/res/values/strings.xml",
+    "android/src/main/res/values-es/strings.xml",
     "android/src/main/java/com/aerofs/reactnativeautoupdater/ReactNativeAutoUpdater.java",
     "android/src/main/java/com/aerofs/reactnativeautoupdater/ReactNativeAutoUpdaterActivity.java",
     "android/src/main/java/com/aerofs/reactnativeautoupdater/ReactNativeAutoUpdaterPackage.java",

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_updater_downloaded_title">Actualización Descargada</string>
+    <string name="auto_updater_downloaded_message">Una actualización fue descargada. ¿Desea instalarlo?</string>
+    <string name="auto_updater_downloaded_now">Ahora</string>
+    <string name="auto_updater_downloaded_later">Después</string>
+
+    <string name="auto_updater_checking">Verificando actualización...</string>
+    <string name="auto_updater_downloading">Descargando actualización...</string>
+    <string name="auto_updater_no_hostname">Ningún nombre de host para descargas relativa. Cancelando</string>
+    <string name="auto_updater_up_to_date">Está Actualizado</string>
+    <string name="auto_updater_no_metadata">No se ha recibido ninguna actualización de metadatos. Cancelando</string>
+    <string name="auto_updater_invalid_metadata">Metadatos de actualización no válida. Cancelando</string>
+    <string name="auto_updater_downloading_error">Hubo un error mientras se descargaba la actualización</string>
+    <string name="auto_updater_downloading_success">Actualizacion finalizada</string>
+</resources>
