@@ -103,8 +103,10 @@ static bool isFirstAccess = YES;
     else {
       if (!self.notificationWindow) {
         self.notificationWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0, -[UIApplication sharedApplication].statusBarFrame.size.height, [[UIScreen mainScreen] bounds].size.width, [UIApplication sharedApplication].statusBarFrame.size.height)];
+        // set a root VC so rotation is supported
+        self.notificationWindow.rootViewController = [UIViewController new];
         [self.notificationWindow setWindowLevel:UIWindowLevelStatusBar + 10];
-        self.notificationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [UIApplication sharedApplication].statusBarFrame.size.height)];
+        self.notificationLabel = [[UILabel alloc] initWithFrame:self.notificationWindow.bounds];
         [self.notificationLabel setTextAlignment:NSTextAlignmentCenter];
         [self.notificationLabel setTextColor:[UIColor whiteColor]];
         [self.notificationLabel setFont:[UIFont systemFontOfSize:12.0]];
