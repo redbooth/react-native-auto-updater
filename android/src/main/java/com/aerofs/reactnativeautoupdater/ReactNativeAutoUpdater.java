@@ -7,9 +7,9 @@ import android.os.AsyncTask;
 import android.os.PowerManager;
 import android.widget.Toast;
 
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import org.json.JSONObject;
 
@@ -264,7 +264,7 @@ public class ReactNativeAutoUpdater {
     }
 
     private void showProgressToast(int message) {
-        if (this.showProgress) {
+        if (this.showProgress && context.getResources().getString(message).length() > 0) {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, message, duration);
             toast.show();
