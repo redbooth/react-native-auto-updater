@@ -207,7 +207,7 @@ ReactNativeAutoUpdater *updater = [ReactNativeAutoUpdater sharedInstance];
 
 
 ### Android
-
+#### React Native < 0.29
 1. Import the needed classes
    
    ``` java
@@ -323,6 +323,115 @@ ReactNativeAutoUpdater *updater = [ReactNativeAutoUpdater sharedInstance];
                 new MainReactPackage());
     }
    ```
+#### React Native >= 0.29
+In `MainActivity.java`:
+```java
+// Add the imports
+import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdater;
+import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdater.ReactNativeAutoUpdaterUpdateType;
+import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdater.ReactNativeAutoUpdaterFrequency;
+import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdaterActivity;
+
+// Extend ReactNativeAutoUpdaterActivity instead of ReactActivity
+public class MainActivity extends ReactNativeAutoUpdaterActivity {
+
+	// Add required methods
+	/**
+	*  URL for the metadata of the update.
+	* */
+	@Override
+	protected String getUpdateMetadataUrl() {
+	return "https://www.aerofs.com/u/8691535/update.android.json";
+	}
+	
+	/**
+	* Name of the metadata file shipped with the app.
+	* This metadata is used to compare the shipped JS code against the updates.
+	* */
+	@Override
+	protected String getMetadataAssetName() {
+	return "metadata.android.json";
+	}
+```
+*OPTIONAL* Add optional methods
+```java
+	/**
+	* 
+	*  If your updates metadata JSON has a relative URL for downloading
+	*  the JS bundle, set this hostname.
+	* */
+	@Override
+	protected String getHostnameForRelativeDownloadURLs() {
+	return "https://www.aerofs.com";
+	}
+	
+	/**
+	*  Decide what type of updates to download.
+	* Available options -
+	*  MAJOR - will download only if major version number changes
+	*  MINOR - will download if major or minor version number changes
+	*  PATCH - will download for any version change
+	* default value - PATCH
+	* */
+	@Override
+	protected ReactNativeAutoUpdaterUpdateType getAllowedUpdateType() {
+	return ReactNativeAutoUpdater.ReactNativeAutoUpdaterUpdateType.MINOR;
+	}
+	
+	/**
+	*  Decide how frequently to check for updates.
+	* Available options -
+	*  EACH_TIME - each time the app starts
+	*  DAILY     - maximum once per day
+	*  WEEKLY    - maximum once per week
+	* default value - EACH_TIME
+	* */
+	@Override
+	protected ReactNativeAutoUpdaterFrequency getUpdateFrequency() {
+	return ReactNativeAutoUpdaterFrequency.EACH_TIME;
+	}
+	
+	/**
+	*  To show progress during the update process.
+	* */
+	@Override
+	protected boolean getShowProgress() {
+	return false;
+	}
+}
+```
+
+In `MainApplication.java`:
+```java
+// Add imports
+import com.aerofs.reactnativeautoupdater.ReactNativeAutoUpdaterPackage;
+import javax.annotation.Nullable;
+
+public class MainApplication extends Application implements ReactApplication {
+	private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+	    // Inside here!!
+	    // add required method
+	    /**
+	     *  Name of the JS Bundle file shipped with the app.
+	     *  This file has to be added as an Android Asset.
+	     * */
+	    @Nullable
+	    @Override
+	    protected String getBundleAssetName() {
+	        return "main.android.jsbundle";
+	    }
+	
+	    // add package to list here
+	    @Override
+	    protected List<ReactPackage> getPackages() {
+	      return Arrays.<ReactPackage>asList(
+	          new ReactNativeAutoUpdaterPackage(),
+	          new MainReactPackage()
+	      );
+	    }
+	}
+}
+```
 
 ### JS (optional, common for iOS and Android)
 
